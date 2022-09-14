@@ -2,4 +2,4 @@
 yamdb_final
 
 
-[![CI](https://github.com/KrasnovValentin/infra_actions/actions/workflows/main.yml/badge.svg)](https://github.com/KrasnovValentin/infra_actions/actions/workflows/main.yml)
+[![CI](https://github.com/KrasnovValentin/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)](https://github.com/KrasnovValentin/yamdb_final/actions/workflows/yamdb_workflow.yml)
