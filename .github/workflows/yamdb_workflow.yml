@@ -35,7 +35,3 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: ${{ github.workflow }} успешно выполнен!
-
-
-
-[![CI](https://github.com/KrasnovValentin/infra_actions/actions/workflows/main.yml/badge.svg)](https://github.com/KrasnovValentin/infra_actions/actions/workflows/main.yml)
