@@ -7,7 +7,7 @@ from rest_framework.exceptions import ValidationError
 
 from reviews.models import Title, Category, Genre, Review, Comment
 
-import users.models
+from users.models import User
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -63,7 +63,7 @@ class TitleSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = users.models.User
+        model = User
         fields = (
             'username', 'email', 'first_name', 'last_name', 'bio', 'role'
         )
@@ -77,7 +77,7 @@ class SendConfirmationCodeSerializer(serializers.Serializer):
     )
 
     class Meta:
-        model = users.models.User
+        model = User
         fields = ('email', 'username')
 
     def validate_username(self, value):
@@ -102,7 +102,7 @@ class UpdateSelfSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        model = users.models.User
+        model = User
         fields = (
             'username', 'email', 'first_name', 'last_name', 'bio'
         )
