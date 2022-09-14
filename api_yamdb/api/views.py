@@ -1,31 +1,28 @@
-from rest_framework.generics import get_object_or_404
-from rest_framework.pagination import LimitOffsetPagination
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.response import Response
+from api.serializers import (CategorySerializer, GenreSerializer,
+                             TitleSerializer)
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.generics import get_object_or_404
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
+from reviews.models import Category, Genre, Review, Title
+from users.models import User, UserRole
 
 from api_yamdb.settings import EMAIL
 
-from users.models import User, UserRole
 from .filters import TitleFilter
 from .mixins import GenreCategModelViewSet
-from .permissions import (IsAdmin, IsSuperUser,
-                          AuthorOrAdminOrModeratorOrReadOnly,
-                          IsAdminOrReadOnly)
-from .serializers import (SendConfirmationCodeSerializer, SendTokenSerializer,
-                          UpdateSelfSerializer, UserSerializer,
-                          CommentSerializer, ReviewSerializer,
-                          TitleSlugSerializer)
-
-from reviews.models import Title, Genre, Category, Review
-
-from api.serializers import (TitleSerializer, GenreSerializer,
-                             CategorySerializer)
+from .permissions import (AuthorOrAdminOrModeratorOrReadOnly, IsAdmin,
+                          IsAdminOrReadOnly, IsSuperUser)
+from .serializers import (CommentSerializer, ReviewSerializer,
+                          SendConfirmationCodeSerializer, SendTokenSerializer,
+                          TitleSlugSerializer, UpdateSelfSerializer,
+                          UserSerializer)
 
 
 class TitleViewSet(viewsets.ModelViewSet):
@@ -161,6 +158,7 @@ def send_confirmation_code(request):
         send_email(email)
         message = {'email': email, 'username': username}
         return Response(message, status=status.HTTP_200_OK)
+    return None
 
 
 @api_view(['POST'])
