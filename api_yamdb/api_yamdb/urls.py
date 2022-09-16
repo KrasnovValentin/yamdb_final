@@ -7,7 +7,7 @@ urlpatterns = [
     path('api/v1/', include('api.urls')),
     path('api/v1/', include('users.urls')),
     path(
-        'redoc/',
+        'redoc/redoc.yml',
         TemplateView.as_view(template_name='redoc.html'),
         name='redoc'
     ),
