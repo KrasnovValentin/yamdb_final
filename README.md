@@ -12,5 +12,5 @@
 или
 ### http://51.250.94.111/redoc/
 
-
+  
 [![CI](https://github.com/KrasnovValentin/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)](https://github.com/KrasnovValentin/yamdb_final/actions/workflows/yamdb_workflow.yml)
